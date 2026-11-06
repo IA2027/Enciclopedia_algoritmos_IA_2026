@@ -1,0 +1,342 @@
+# PROYECTO: AI ALGORITHMS ENCYCLOPEDIA 2026
+
+Actuá como un equipo multidisciplinario integrado por:
+- Senior AI Engineer.
+- Data Scientist.
+- Matemático especializado en Machine Learning.
+- Senior Full Stack Developer.
+- Especialista UX/UI en plataformas educativas.
+- Diseñador de visualizaciones científicas y matemáticas.
+
+Tu misión es desarrollar una LANDING PAGE interactiva, moderna, profesional y de nivel académico avanzado, dedicada a una ENCICLOPEDIA COMPLETA DE ALGORITMOS DE INTELIGENCIA ARTIFICIAL.
+
+## 1. IDENTIDAD VISUAL Y DISEÑO
+
+Crear una interfaz tecnológica, elegante, minimalista y profesional.
+
+ESTILO VISUAL OBLIGATORIO:
+
+- Fondo principal: gris oscuro #17191D.
+- Fondo secundario: #22252B.
+- Tarjetas: #292D34.
+- Tipografía principal: blanca #FFFFFF.
+- Títulos principales: naranja #FF8C32.
+- Subtítulos y elementos técnicos: azul #39A9FF.
+- Texto secundario: gris claro #B8BEC8.
+- Líneas divisorias: gris #3A3F48.
+
+Tipografías recomendadas:
+- Inter para textos.
+- JetBrains Mono para código.
+- Space Grotesk para encabezados.
+
+Diseño responsive para computadoras, tablets y celulares.
+
+Evitar degradados excesivos, animaciones innecesarias y elementos decorativos que dificulten la lectura.
+
+## 2. ENCABEZADO PRINCIPAL
+
+Crear un HERO SECTION impactante.
+
+Título principal:
+
+AI ALGORITHMS
+ENCYCLOPEDIA 2026
+
+Subtítulo:
+
+"Una enciclopedia técnica e interactiva de los algoritmos que impulsan la Inteligencia Artificial moderna."
+
+Texto complementario:
+
+"Desde los fundamentos matemáticos del Machine Learning hasta las arquitecturas de Deep Learning, Transformers, modelos generativos y sistemas inteligentes."
+
+Incluir:
+- Botón EXPLORAR ALGORITMOS.
+- Botón EXPLORAR MATEMÁTICAS.
+- Contador de algoritmos.
+- Contador de categorías.
+- Indicador de actualización: NOVIEMBRE 2026.
+
+## 3. PANEL DE NAVEGACIÓN
+
+Crear un menú lateral fijo y desplegable con las 15 categorías:
+
+1. Fundamentos matemáticos.
+2. Regresión.
+3. Clasificación.
+4. Ensemble Learning.
+5. Aprendizaje no supervisado.
+6. Reducción de dimensionalidad.
+7. Detección de anomalías.
+8. Redes neuronales artificiales.
+9. Deep Learning.
+10. Procesamiento del lenguaje natural.
+11. Transformers y LLM.
+12. Aprendizaje por refuerzo.
+13. Inteligencia artificial generativa.
+14. Optimización y búsqueda.
+15. Sistemas avanzados e híbridos.
+
+Cada categoría debe mostrar sus algoritmos correspondientes.
+
+## 4. CATÁLOGO DE ALGORITMOS
+
+Incorporar los 220 algoritmos enumerados en el índice del manual.
+
+No omitir categorías ni algoritmos.
+
+Cada algoritmo debe tener una tarjeta individual con:
+
+- Nombre.
+- Número de identificación.
+- Categoría.
+- Descripción breve.
+- Aplicación principal.
+- Nivel de dificultad.
+- Botón VER DESARROLLO.
+
+Incluir un buscador global para encontrar algoritmos por nombre, categoría o aplicación.
+
+Agregar filtros:
+- Principiante.
+- Intermedio.
+- Avanzado.
+- Supervisado.
+- No supervisado.
+- Por refuerzo.
+- Generativo.
+- Deep Learning.
+
+## 5. FICHA TÉCNICA INDIVIDUAL DE CADA ALGORITMO
+
+Al seleccionar cualquier algoritmo, abrir una página o panel de detalle.
+
+Cada ficha debe contener:
+
+A. DEFINICIÓN TÉCNICA
+Explicación completa del algoritmo.
+
+B. ¿PARA QUÉ SE UTILIZA?
+Aplicaciones reales en empresas, investigación, ciencia, tecnología y automatización.
+
+C. ¿CÓMO FUNCIONA?
+Explicación secuencial de su funcionamiento interno.
+
+D. REPRESENTACIÓN GRÁFICA
+Crear un gráfico científico individual y específico del algoritmo.
+
+No utilizar gráficos genéricos repetidos.
+
+E. FUNDAMENTOS MATEMÁTICOS
+Mostrar todas las fórmulas necesarias para comprender y desarrollar el algoritmo.
+
+F. EXPLICACIÓN DE VARIABLES
+Describir cada símbolo matemático, parámetro y variable.
+
+G. DERIVACIÓN MATEMÁTICA
+Desarrollar las ecuaciones paso a paso, incluyendo derivadas, gradientes, funciones de pérdida y optimización cuando correspondan.
+
+H. EJEMPLO NUMÉRICO
+Utilizar datos concretos y resolver el procedimiento paso a paso.
+
+I. VENTAJAS Y LIMITACIONES
+Explicar fortalezas, debilidades y escenarios de aplicación.
+
+J. IMPLEMENTACIÓN PYTHON
+Incluir código funcional, comentado y explicado línea por línea.
+
+K. REFERENCIAS
+Incorporar bibliografía, documentación científica y fuentes académicas.
+
+## 6. MOTOR MATEMÁTICO
+
+Utilizar MathJax o KaTeX para renderizar correctamente las fórmulas matemáticas.
+
+Las fórmulas deben visualizarse con notación matemática profesional.
+
+Requisitos:
+- Fracciones correctamente representadas.
+- Sumatorias.
+- Productorias.
+- Integrales.
+- Derivadas parciales.
+- Gradientes.
+- Matrices.
+- Vectores.
+- Funciones de probabilidad.
+- Funciones de pérdida.
+- Ecuaciones diferenciales.
+- Operadores matemáticos.
+- Notación tensorial.
+
+Agregar un botón COPIAR FÓRMULA.
+
+Agregar otro botón VER EXPLICACIÓN para desplegar el significado de cada componente.
+
+No mostrar fórmulas matemáticas como texto plano cuando puedan renderizarse correctamente.
+
+## 7. SISTEMA DE VISUALIZACIÓN CIENTÍFICA
+
+Utilizar Plotly.js, D3.js o Chart.js según el tipo de gráfico.
+
+Cada algoritmo debe disponer de su propia representación visual.
+
+Ejemplos:
+
+- Regresión lineal: dispersión y recta de regresión.
+- Regresión logística: curva sigmoidea.
+- KNN: distribución de puntos y regiones de decisión.
+- SVM: hiperplano, vectores de soporte y márgenes.
+- Árboles de decisión: estructura jerárquica de nodos.
+- Random Forest: conjunto de árboles.
+- K-Means: agrupaciones de datos y centroides.
+- DBSCAN: clústeres, ruido y puntos centrales.
+- PCA: proyección de componentes principales.
+- t-SNE: distribución de puntos en dos dimensiones.
+- CNN: filtros convolucionales y mapas de características.
+- RNN: secuencia temporal y conexiones recurrentes.
+- LSTM: compuertas y flujo de información.
+- Transformer: arquitectura Encoder-Decoder y atención.
+- Self-Attention: matriz de atención.
+- GAN: generador y discriminador.
+- VAE: espacio latente.
+- Diffusion Models: proceso de ruido y eliminación de ruido.
+- Q-Learning: matriz Q y estados.
+- PPO: política y actualización de parámetros.
+
+Los gráficos deben ser interactivos cuando corresponda.
+
+Agregar controles para modificar parámetros y observar cómo cambia la representación gráfica.
+
+## 8. LABORATORIO MATEMÁTICO INTERACTIVO
+
+Crear una sección denominada:
+
+AI MATHEMATICAL LAB
+
+Permitir experimentar con:
+- Variables.
+- Parámetros.
+- Pesos.
+- Sesgos.
+- Learning Rate.
+- Número de iteraciones.
+- Cantidad de clústeres.
+- Funciones de activación.
+- Funciones de pérdida.
+
+Mostrar los resultados matemáticos y gráficos en tiempo real.
+
+Incluir ejemplos interactivos de regresión lineal, K-Means, regresión logística y descenso del gradiente.
+
+## 9. BUSCADOR DE FÓRMULAS
+
+Crear un buscador independiente para localizar ecuaciones matemáticas.
+
+Permitir buscar por:
+- Nombre de algoritmo.
+- Nombre de fórmula.
+- Variable matemática.
+- Tipo de función.
+- Categoría.
+
+Cada resultado debe mostrar la fórmula renderizada, su explicación y el algoritmo relacionado.
+
+## 10. SECCIÓN PYTHON AI LAB
+
+Crear un espacio de código con:
+- Resaltado de sintaxis Python.
+- Explicaciones del código.
+- Botón copiar código.
+- Ejemplos de entrada y salida.
+- Librerías utilizadas.
+- Enlaces a documentación oficial.
+
+Utilizar ejemplos con NumPy, Pandas, Matplotlib, Scikit-learn, PyTorch y TensorFlow cuando corresponda.
+
+No presentar pseudocódigo como si fuera código ejecutable.
+
+## 11. BIBLIOTECA ACADÉMICA
+
+Crear una sección de referencias técnicas:
+
+- Documentación oficial.
+- Papers científicos.
+- Libros de Machine Learning.
+- Publicaciones de investigación.
+- Universidades y centros de investigación.
+- Repositorios de código.
+
+No inventar autores, publicaciones, DOI ni enlaces.
+
+## 12. FUNCIONALIDADES ADICIONALES
+
+Incluir:
+
+- Modo claro y oscuro.
+- Índice alfabético.
+- Buscador inteligente.
+- Navegación entre algoritmos.
+- Marcadores de favoritos.
+- Historial de algoritmos consultados.
+- Progreso de lectura.
+- Exportación de fórmulas.
+- Impresión de fichas técnicas.
+- Exportación de fichas individuales a PDF.
+- Navegación responsive.
+
+## 13. TECNOLOGÍAS RECOMENDADAS
+
+Frontend:
+- React.
+- TypeScript.
+- Tailwind CSS.
+
+Visualizaciones:
+- Plotly.js.
+- D3.js.
+
+Matemáticas:
+- KaTeX o MathJax.
+
+Iconografía:
+- Lucide Icons.
+
+Persistencia:
+- LocalStorage para preferencias y favoritos.
+- Base de datos preparada para incorporar nuevos algoritmos.
+
+## 14. REQUISITOS DE CALIDAD
+
+- Código limpio, modular y escalable.
+- Arquitectura reutilizable.
+- Componentes independientes.
+- Navegación funcional.
+- Todos los botones deben funcionar.
+- No utilizar enlaces ficticios.
+- No utilizar contenido de relleno.
+- No repetir gráficos entre algoritmos.
+- No omitir fórmulas relevantes.
+- No inventar resultados matemáticos.
+- Evitar errores de renderizado de ecuaciones.
+- Optimizar rendimiento.
+- Garantizar legibilidad en dispositivos móviles.
+
+Los 220 algoritmos deben estar incorporados al catálogo desde el comienzo. Si el desarrollo de las fichas completas requiere varias etapas, crear una estructura de datos para que cada ficha se complete progresivamente sin perder contenido.
+
+## 15. RESULTADO FINAL
+
+Desarrollar una verdadera plataforma educativa y de consulta técnica, no una simple landing page publicitaria.
+
+El resultado debe transmitir la calidad de una enciclopedia universitaria de Inteligencia Artificial y un laboratorio de investigación matemática.
+
+Nombre definitivo:
+
+AI ALGORITHMS ENCYCLOPEDIA 2026
+
+Frase institucional:
+
+"Comprender las matemáticas. Dominar los algoritmos. Construir la Inteligencia Artificial del futuro."
+
+Entregar el proyecto completo, con archivos organizados, instrucciones para ejecutarlo localmente y posibilidad de ampliarlo en el futuro.

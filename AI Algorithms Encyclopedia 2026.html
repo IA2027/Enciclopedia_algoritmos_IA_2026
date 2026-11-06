@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>AI Algorithms Encyclopedia 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono&family=Space+Grotesk:wght@600;700&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.35.2/plotly.min.js"></script>
+<style>
+:root{--bg:#17191D;--bg2:#22252B;--card:#292D34;--tx:#fff;--or:#FF8C32;--bl:#39A9FF;--mu:#B8BEC8;--ln:#3A3F48;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#F4F5F7;--bg2:#E9ECF0;--card:#fff;--tx:#17191D;--or:#D96A0B;--bl:#0B74C9;--mu:#4A515C;--ln:#CBD0D8}}
+:root[data-theme="light"]{--bg:#F4F5F7;--bg2:#E9ECF0;--card:#fff;--tx:#17191D;--or:#D96A0B;--bl:#0B74C9;--mu:#4A515C;--ln:#CBD0D8}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.6 Inter,system-ui,sans-serif}
+h1,h2,h3{font-family:'Space Grotesk',sans-serif;margin:0}h1,h2{color:var(--or)}h3{color:var(--bl)}
+button{font:inherit;cursor:pointer;border:1px solid var(--ln);background:var(--card);color:var(--tx);border-radius:8px;padding:8px 14px}
+button:hover{border-color:var(--bl)}.pri{background:var(--or);color:#17191D;border:0;font-weight:600}
+#side{position:fixed;top:0;left:0;bottom:0;width:260px;background:var(--bg2);border-right:1px solid var(--ln);overflow:auto;padding:16px;z-index:5;transition:transform .2s}
+#side a{display:block;padding:6px 8px;border-radius:6px;color:var(--mu);cursor:pointer;font-size:14px}#side a:hover,#side a.on{background:var(--card);color:var(--tx)}
+#main{margin-left:260px;padding:24px}.hero{padding:40px 0;border-bottom:1px solid var(--ln)}
+.hero h1{font-size:clamp(32px,6vw,64px);line-height:1.05}.hero p{color:var(--mu);max-width:720px}
+.stats{display:flex;gap:24px;flex-wrap:wrap;margin:20px 0}.stats b{display:block;font:700 28px 'Space Grotesk';color:var(--bl)}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}input[type=search]{flex:1;min-width:200px;padding:10px;border-radius:8px;border:1px solid var(--ln);background:var(--bg2);color:var(--tx)}
+.chip.on{background:var(--bl);color:#17191D;border-color:var(--bl)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.card small{color:var(--mu)}.tag{font:12px 'JetBrains Mono';color:var(--bl)}
+#modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;z-index:10;overflow:auto}
+#sheet{background:var(--bg);max-width:900px;margin:3vh auto;border:1px solid var(--ln);border-radius:14px;padding:24px;position:relative}
+#sheet section{margin:22px 0;border-top:1px solid var(--ln);padding-top:14px}
+pre{background:var(--bg2);border:1px solid var(--ln);padding:12px;border-radius:8px;overflow-x:auto;font:13px 'JetBrains Mono',monospace}
+.fx{background:var(--bg2);border-radius:8px;padding:10px;margin:8px 0;overflow-x:auto}.ex{color:var(--mu);margin:6px 0}
+input[type=range]{width:220px}.menu{display:none}
+@media(max-width:800px){#side{transform:translateX(-100%)}#side.open{transform:none}#main{margin-left:0;padding:16px}.menu{display:inline-block}}
+</style>
+</head>
+<body>
+<nav id="side"><h3 style="margin-bottom:10px">Categorías</h3><div id="cats"></div></nav>
+<div id="main">
+<button class="menu" onclick="side.classList.toggle('open')">☰ Categorías</button>
+<button style="float:right" onclick="theme()">◐ Tema</button>
+<header class="hero">
+<h1>AI ALGORITHMS<br>ENCYCLOPEDIA 2026</h1>
+<p>Una enciclopedia técnica e interactiva de los algoritmos que impulsan la Inteligencia Artificial moderna.</p>
+<p>Desde los fundamentos matemáticos del Machine Learning hasta las arquitecturas de Deep Learning, Transformers, modelos generativos y sistemas inteligentes.</p>
+<div class="stats"><div><b id="nA">0</b>algoritmos cargados</div><div><b>15</b>categorías</div><div><b>NOV 2026</b>actualización</div></div>
+<button class="pri" onclick="go('cat')">EXPLORAR ALGORITMOS</button> <button onclick="open_(1)">EXPLORAR MATEMÁTICAS</button>
+</header>
+<div class="bar" id="cat"><input type="search" id="q" placeholder="Buscar por nombre, categoría o aplicación…"></div>
+<div class="bar" id="chips"></div>
+<div class="grid" id="grid"></div>
+<p style="color:var(--mu);margin-top:30px;border-top:1px solid var(--ln);padding-top:14px"><i>Comprender las matemáticas. Dominar los algoritmos. Construir la Inteligencia Artificial del futuro.</i></p>
+</div>
+<div id="modal" onclick="if(event.target===this)close_()"><div id="sheet"></div></div>
+<script>
+const CATS=["Fundamentos matemáticos","Regresión","Clasificación","Ensemble Learning","Aprendizaje no supervisado","Reducción de dimensionalidad","Detección de anomalías","Redes neuronales artificiales","Deep Learning","Procesamiento del lenguaje natural","Transformers y LLM","Aprendizaje por refuerzo","Inteligencia artificial generativa","Optimización y búsqueda","Sistemas avanzados e híbridos"];
+const LV=["Principiante","Intermedio","Avanzado"];
+const TG={sup:"Supervisado",uns:"No supervisado",rl:"Por refuerzo",gen:"Generativo",dl:"Deep Learning"};
+const R=String.raw;
+/* ESQUEMA: {n,c:índice categoría,l:nivel,t:[etiquetas],d,a,full?}. Para añadir un algoritmo basta agregar un objeto; "full" completa la ficha. */
+const ALG=[
+{n:"Descenso del gradiente",c:0,l:0,t:[],d:"Minimiza una función moviéndose contra su gradiente.",a:"Entrenamiento de casi todos los modelos"},
+{n:"Regresión lineal",c:1,l:0,t:["sup"],d:"Ajusta una recta (o hiperplano) que minimiza el error cuadrático.",a:"Predicción de precios y tendencias",full:{
+ def:"Modelo que supone una relación lineal entre una variable de entrada x y una salida y. Los parámetros se obtienen minimizando la suma de errores cuadráticos (mínimos cuadrados ordinarios).",
+ use:"Estimación de demanda, precios inmobiliarios, análisis econométrico y línea base en cualquier problema de regresión.",
+ how:["Se plantea ŷ = β₀ + β₁x.","Se mide el error de cada punto: yᵢ − ŷᵢ.","Se minimiza la suma de cuadrados (SSE).","Se derivan e igualan a cero las derivadas para obtener β₀ y β₁."],
+ fx:[[R`\hat y=\beta_0+\beta_1x`,"ŷ: predicción; β₀: ordenada; β₁: pendiente; x: entrada."],[R`J(\beta)=\sum_{i=1}^{n}(y_i-\beta_0-\beta_1x_i)^2`,"J: función de pérdida (SSE); n: nº de datos; yᵢ: valor real."],[R`\beta_1=\frac{\sum_i(x_i-\bar x)(y_i-\bar y)}{\sum_i(x_i-\bar x)^2},\quad \beta_0=\bar y-\beta_1\bar x`,"x̄, ȳ: medias muestrales."]],
+ der:[[R`\frac{\partial J}{\partial\beta_0}=-2\sum_i(y_i-\beta_0-\beta_1x_i)=0`,"Primera ecuación normal."],[R`\frac{\partial J}{\partial\beta_1}=-2\sum_i x_i(y_i-\beta_0-\beta_1x_i)=0`,"Segunda ecuación normal; resolver el sistema da las fórmulas de β."]],
+ ex:"Puntos (1,2), (2,3), (3,5): x̄=2, ȳ=10/3. Sxy=(−1)(−4/3)+0+(1)(5/3)=3; Sxx=2. Entonces β₁=3/2=1,5 y β₀=10/3−1,5·2=1/3. Predicción para x=4: 1/3+6≈6,33.",
+ pro:"Simple, rápida, interpretable. Limita: sensible a outliers y solo captura relaciones lineales.",
+ code:`import numpy as np
+from sklearn.linear_model import LinearRegression
+
+X = np.array([[1], [2], [3]])      # entradas (n, 1)
+y = np.array([2, 3, 5])            # salidas
+m = LinearRegression().fit(X, y)   # resuelve mínimos cuadrados
+print(m.intercept_, m.coef_[0])    # 0.333... 1.5
+print(m.predict([[4]]))            # [6.333...]`,
+ refs:[["Hastie, Tibshirani & Friedman — The Elements of Statistical Learning (Springer)",""],["scikit-learn: Ordinary Least Squares","https://scikit-learn.org/stable/modules/linear_model.html#ordinary-least-squares"]],
+ plot:"lin",pl:["Ruido",0,6,0.2,2]}},
+{n:"Regresión logística",c:2,l:0,t:["sup"],d:"Modela la probabilidad de una clase con la función sigmoide.",a:"Scoring de crédito, diagnóstico binario",full:{
+ def:"Clasificador que modela P(y=1|x) aplicando la sigmoide a una combinación lineal de las entradas. Se entrena minimizando la entropía cruzada.",
+ use:"Riesgo crediticio, detección de spam, diagnóstico médico, predicción de abandono de clientes.",
+ how:["Se calcula z = wx + b.","Se transforma con σ(z) para obtener una probabilidad.","Se mide el error con entropía cruzada.","Se actualizan w y b con descenso del gradiente."],
+ fx:[[R`\sigma(z)=\frac{1}{1+e^{-z}},\quad z=wx+b`,"σ: sigmoide; w: peso; b: sesgo."],[R`L=-\frac1n\sum_{i=1}^n\left[y_i\ln\hat p_i+(1-y_i)\ln(1-\hat p_i)\right]`,"p̂ᵢ=σ(zᵢ): probabilidad predicha."]],
+ der:[[R`\sigma'(z)=\sigma(z)\,(1-\sigma(z))`,"Propiedad clave de la sigmoide."],[R`\frac{\partial L}{\partial w}=\frac1n\sum_i(\hat p_i-y_i)x_i,\quad \frac{\partial L}{\partial b}=\frac1n\sum_i(\hat p_i-y_i)`,"Al combinar la regla de la cadena con σ′ los términos se cancelan y queda (p̂−y)."]],
+ ex:"Con w=2, b=−1 y x=1: z=1 y σ(1)=1/(1+e⁻¹)≈0,731. Con x=0,5: z=0 y σ(0)=0,5, el punto de frontera de decisión.",
+ pro:"Probabilidades calibradas e interpretables. Limita: frontera lineal; puede fallar con clases no linealmente separables.",
+ code:`import numpy as np
+from sklearn.linear_model import LogisticRegression
+
+X = np.array([[0], [1], [2], [3], [4], [5]])
+y = np.array([0, 0, 0, 1, 1, 1])
+clf = LogisticRegression().fit(X, y)
+print(clf.predict_proba([[2.5]]))  # [[P(0), P(1)]]`,
+ refs:[["Hastie, Tibshirani & Friedman — The Elements of Statistical Learning (Springer)",""],["scikit-learn: Logistic regression","https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression"]],
+ plot:"log",pl:["Peso w",0.2,4,0.1,1.5]}},
+{n:"Naive Bayes",c:2,l:0,t:["sup"],d:"Clasificador probabilístico basado en el teorema de Bayes e independencia condicional.",a:"Filtrado de spam, clasificación de texto"},
+{n:"K-Nearest Neighbors (KNN)",c:2,l:0,t:["sup"],d:"Clasifica según la mayoría de los k vecinos más cercanos.",a:"Recomendación y reconocimiento de patrones"},
+{n:"Máquinas de vectores de soporte (SVM)",c:2,l:2,t:["sup"],d:"Busca el hiperplano de máximo margen entre clases.",a:"Clasificación de texto y bioinformática"},
+{n:"Árbol de decisión",c:2,l:0,t:["sup"],d:"Divide los datos con reglas jerárquicas basadas en ganancia de información.",a:"Decisiones explicables en finanzas y salud"},
+{n:"Random Forest",c:3,l:1,t:["sup"],d:"Conjunto de árboles entrenados con bagging y selección aleatoria de variables.",a:"Predicción tabular robusta"},
+{n:"Gradient Boosting",c:3,l:2,t:["sup"],d:"Suma modelos débiles que corrigen el gradiente del error del anterior.",a:"Competencias de datos tabulares, ranking"},
+{n:"K-Means",c:4,l:0,t:["uns"],d:"Agrupa datos en k clústeres alternando asignación y cálculo de centroides.",a:"Segmentación de clientes, compresión de color",full:{
+ def:"Algoritmo de clustering que particiona n puntos en k grupos minimizando la suma de distancias cuadráticas de cada punto al centroide de su grupo (inercia). Se resuelve con el algoritmo iterativo de Lloyd.",
+ use:"Segmentación de clientes, cuantización de imágenes, agrupación de documentos, inicialización de otros modelos.",
+ how:["Elegir k centroides iniciales.","Asignar cada punto al centroide más cercano.","Recalcular cada centroide como la media de sus puntos.","Repetir 2–3 hasta que las asignaciones no cambien."],
+ fx:[[R`J=\sum_{j=1}^{k}\sum_{x_i\in C_j}\lVert x_i-\mu_j\rVert^2`,"J: inercia; Cⱼ: clúster j; μⱼ: centroide; ‖·‖: norma euclídea."],[R`\mu_j=\frac{1}{|C_j|}\sum_{x_i\in C_j}x_i`,"|Cⱼ|: nº de puntos del clúster."]],
+ der:[[R`\frac{\partial J}{\partial\mu_j}=-2\sum_{x_i\in C_j}(x_i-\mu_j)=0`,"Igualar a cero la derivada respecto a μⱼ."],[R`\Rightarrow\ \mu_j=\frac{1}{|C_j|}\sum_{x_i\in C_j}x_i`,"La media minimiza la suma de cuadrados; por eso J nunca aumenta en cada iteración."]],
+ ex:"Datos 1, 2, 10, 11 con k=2 y centroides iniciales 1 y 10. Asignación: {1,2}→C₁, {10,11}→C₂. Nuevos centroides: 1,5 y 10,5. Otra pasada no cambia la asignación: convergió. J=0,25·4=1.",
+ pro:"Rápido y escalable. Limita: exige fijar k, asume grupos esféricos y depende de la inicialización.",
+ code:`import numpy as np
+from sklearn.cluster import KMeans
+
+X = np.array([[1], [2], [10], [11]])
+km = KMeans(n_clusters=2, n_init=10, random_state=0).fit(X)
+print(km.labels_)           # asignación de cada punto
+print(km.cluster_centers_)  # [[1.5], [10.5]] (orden variable)
+print(km.inertia_)          # 1.0`,
+ refs:[["Lloyd, S. (1982). Least squares quantization in PCM. IEEE Trans. Information Theory, 28(2)",""],["scikit-learn: K-means","https://scikit-learn.org/stable/modules/clustering.html#k-means"]],
+ plot:"km",pl:["k",1,6,1,3]}},
+{n:"DBSCAN",c:4,l:1,t:["uns"],d:"Clustering por densidad que detecta ruido y formas arbitrarias.",a:"Datos geoespaciales y detección de ruido"},
+{n:"PCA",c:5,l:1,t:["uns"],d:"Proyecta los datos sobre los ejes de máxima varianza.",a:"Compresión y visualización de datos"},
+{n:"Isolation Forest",c:6,l:1,t:["uns"],d:"Aísla anomalías con particiones aleatorias: son las que requieren menos cortes.",a:"Fraude y monitoreo industrial"},
+{n:"Perceptrón multicapa (MLP)",c:7,l:1,t:["sup","dl"],d:"Red totalmente conectada entrenada con retropropagación.",a:"Clasificación y regresión general"},
+{n:"Red neuronal convolucional (CNN)",c:8,l:1,t:["sup","dl"],d:"Aplica filtros convolucionales para extraer características espaciales.",a:"Visión por computador"},
+{n:"LSTM",c:8,l:2,t:["sup","dl"],d:"Red recurrente con compuertas que conserva memoria a largo plazo.",a:"Series temporales y lenguaje"},
+{n:"Word2Vec",c:9,l:1,t:["uns","dl"],d:"Aprende vectores de palabras a partir del contexto.",a:"Búsqueda semántica"},
+{n:"Transformer",c:10,l:2,t:["sup","dl","gen"],d:"Arquitectura basada en autoatención, sin recurrencia.",a:"Modelos de lenguaje, traducción, visión"},
+{n:"Q-Learning",c:11,l:1,t:["rl"],d:"Aprende la tabla de valores Q(s,a) por diferencia temporal.",a:"Juegos y control discreto"},
+{n:"PPO",c:11,l:2,t:["rl","dl"],d:"Optimiza la política con actualizaciones recortadas y estables.",a:"Robótica y alineamiento de LLM"},
+{n:"GAN",c:12,l:2,t:["gen","dl"],d:"Generador y discriminador compiten en un juego de suma cero.",a:"Síntesis de imágenes"},
+{n:"VAE",c:12,l:2,t:["gen","dl"],d:"Autoencoder probabilístico con espacio latente regularizado.",a:"Generación y compresión"},
+{n:"Modelos de difusión",c:12,l:2,t:["gen","dl"],d:"Aprenden a eliminar ruido progresivamente para generar datos.",a:"Generación de imagen y audio"},
+{n:"Algoritmos genéticos",c:13,l:1,t:[],d:"Búsqueda evolutiva con selección, cruce y mutación.",a:"Optimización combinatoria"}
+].map((a,i)=>({...a,id:i+1}));
+
+/* estado */
+let catF=-1,flt="",fav=[],hist=[],cur=null;
+try{fav=JSON.parse(localStorage.getItem("fav")||"[]")}catch(e){}
+const $=id=>document.getElementById(id);
+const sv=()=>{try{localStorage.setItem("fav",JSON.stringify(fav))}catch(e){}};
+function theme(){const r=document.documentElement;r.dataset.theme=(r.dataset.theme==="light"||(!r.dataset.theme&&matchMedia("(prefers-color-scheme:light)").matches))?"dark":"light";if(cur)redraw()}
+function go(id){$(id).scrollIntoView({behavior:"smooth"})}
+function init(){
+ $("nA").textContent=ALG.length;
+ $("cats").innerHTML=`<a onclick="setCat(-1)" class="on">Todas</a>`+CATS.map((c,i)=>`<a onclick="setCat(${i})">${i+1}. ${c} <small>(${ALG.filter(a=>a.c==i).length})</small></a>`).join("");
+ const ch=[...LV.map((l,i)=>["l"+i,l]),...Object.entries(TG),["fav","★ Favoritos"]];
+ $("chips").innerHTML=ch.map(([k,l])=>`<button class="chip" data-k="${k}" onclick="setF('${k}')">${l}</button>`).join("");
+ $("q").oninput=list;list();
+}
+function setCat(i){catF=i;document.querySelectorAll("#cats a").forEach((a,j)=>a.classList.toggle("on",j==i+1));side.classList.remove("open");list();go("cat")}
+function setF(k){flt=flt===k?"":k;document.querySelectorAll(".chip").forEach(c=>c.classList.toggle("on",c.dataset.k===flt));list()}
+function list(){
+ const q=$("q").value.toLowerCase();
+ const r=ALG.filter(a=>(catF<0||a.c==catF)&&(!q||(a.n+CATS[a.c]+a.a+a.d).toLowerCase().includes(q))&&(!flt||(flt[0]=="l"&&flt.length==2?a.l==+flt[1]:flt=="fav"?fav.includes(a.id):a.t.includes(flt))));
+ $("grid").innerHTML=r.map(a=>`<div class="card"><span class="tag">#${String(a.id).padStart(3,"0")} · ${CATS[a.c]}</span><h3>${a.n}</h3><span>${a.d}</span><small><b>Aplicación:</b> ${a.a}</small><small>Nivel: ${LV[a.l]}${a.full?" · ficha completa":" · ficha pendiente"}</small><div><button class="pri" onclick="open_(${a.id})">VER DESARROLLO</button> <button onclick="tg(${a.id})">${fav.includes(a.id)?"★":"☆"}</button></div></div>`).join("")||"<p>Sin resultados.</p>";
+}
+function tg(id){fav=fav.includes(id)?fav.filter(x=>x!=id):[...fav,id];sv();list();if(cur&&cur.id==id)redraw()}
+function open_(id){
+ cur=ALG.find(a=>a.id==id)||ALG.find(a=>a.full);hist=[cur.id,...hist.filter(x=>x!=cur.id)].slice(0,8);
+ $("modal").style.display="block";redraw();
+}
+function close_(){$("modal").style.display="none";cur=null}
+function nav(d){const f=ALG.findIndex(a=>a.id==cur.id);open_(ALG[(f+d+ALG.length)%ALG.length].id)}
+function cp(t){try{navigator.clipboard.writeText(t)}catch(e){}}
+function mth(rows,id){return rows.map((f,i)=>`<div class="fx"><div id="${id}${i}"></div><button onclick="cp(FX['${id}${i}'])">COPIAR FÓRMULA</button> <button onclick="this.nextElementSibling.hidden=!this.nextElementSibling.hidden">VER EXPLICACIÓN</button><div class="ex" hidden>${f[1]}</div></div>`).join("")}
+let FX={};
+function redraw(){
+ const a=cur,f=a.full;FX={};
+ let h=`<button style="float:right" onclick="close_()">✕ Cerrar</button><span class="tag">#${String(a.id).padStart(3,"0")} · ${CATS[a.c]} · ${LV[a.l]}</span><h2>${a.n}</h2>
+ <button onclick="nav(-1)">← Anterior</button> <button onclick="nav(1)">Siguiente →</button> <button onclick="tg(${a.id})">${fav.includes(a.id)?"★ Favorito":"☆ Favorito"}</button> <button onclick="print()">Imprimir / PDF</button>
+ <section><h3>A. Definición técnica</h3><p>${f?f.def:a.d}</p></section><section><h3>B. ¿Para qué se utiliza?</h3><p>${f?f.use:a.a}</p></section>`;
+ if(!f)h+=`<section><p style="color:var(--mu)">La ficha completa (cómo funciona, gráfico, derivación, ejemplo numérico y código) de este algoritmo aún no está cargada. Se completa añadiendo su objeto <code>full</code> en <code>ALG</code>.</p></section>`;
+ else{
+  h+=`<section><h3>C. ¿Cómo funciona?</h3><ol>${f.how.map(s=>`<li>${s}</li>`).join("")}</ol></section>
+  <section><h3>D. Representación gráfica</h3><div>${f.pl[0]}: <input type="range" id="sl" min="${f.pl[1]}" max="${f.pl[2]}" step="${f.pl[3]}" value="${f.pl[4]}" oninput="draw()"> <b id="sv"></b></div><div id="plot" style="height:360px"></div></section>
+  <section><h3>E–F. Fundamentos matemáticos y variables</h3>${mth(f.fx,"f")}</section>
+  <section><h3>G. Derivación</h3>${mth(f.der,"d")}</section>
+  <section><h3>H. Ejemplo numérico</h3><p>${f.ex}</p></section>
+  <section><h3>I. Ventajas y limitaciones</h3><p>${f.pro}</p></section>
+  <section><h3>J. Implementación Python</h3><pre>${f.code.replace(/&/g,"&amp;").replace(/</g,"&lt;")}</pre><button onclick="cp(cur.full.code)">COPIAR CÓDIGO</button></section>
+  <section><h3>K. Referencias</h3><ul>${f.refs.map(r=>`<li>${r[1]?`<a style="color:var(--bl)" href="${r[1]}" target="_blank" rel="noopener">${r[0]}</a>`:r[0]}</li>`).join("")}</ul></section>`;
+ }
+ h+=`<section><small>Historial reciente: ${hist.map(i=>ALG[i-1].n).join(" · ")}</small></section>`;
+ $("sheet").innerHTML=h;
+ if(f){[["f",f.fx],["d",f.der]].forEach(([p,rows])=>rows.forEach((r,i)=>{FX[p+i]=r[0];katex.render(r[0],$(p+i),{displayMode:true,throwOnError:false,output:"mathml"})}));draw()}
+}
+let s0=7;const rnd=()=>(s0=s0*16807%2147483647)/2147483647;
+function draw(){
+ const a=cur,v=+$("sl").value;$("sv").textContent=v;s0=7;
+ const st=getComputedStyle(document.documentElement),tx=st.getPropertyValue("--tx").trim(),ln=st.getPropertyValue("--ln").trim(),or=st.getPropertyValue("--or").trim(),bl=st.getPropertyValue("--bl").trim();
+ const L={paper_bgcolor:"rgba(0,0,0,0)",plot_bgcolor:"rgba(0,0,0,0)",font:{color:tx},margin:{t:20,l:40,r:10,b:40},xaxis:{gridcolor:ln},yaxis:{gridcolor:ln}};let T=[];
+ if(a.full.plot=="lin"){
+  const x=[...Array(40)].map((_,i)=>i/4),y=x.map(t=>2*t+1+(rnd()-.5)*2*v);
+  const mx=x.reduce((p,c)=>p+c)/40,my=y.reduce((p,c)=>p+c)/40;
+  const b1=x.reduce((p,c,i)=>p+(c-mx)*(y[i]-my),0)/x.reduce((p,c)=>p+(c-mx)**2,0),b0=my-b1*mx;
+  T=[{x,y,mode:"markers",name:"datos",marker:{color:bl}},{x:[0,10],y:[b0,b0+10*b1],mode:"lines",name:`ŷ=${b0.toFixed(2)}+${b1.toFixed(2)}x`,line:{color:or}}];
+ }else if(a.full.plot=="log"){
+  const x=[...Array(121)].map((_,i)=>-6+i/10),sg=t=>1/(1+Math.exp(-(v*t-1)));
+  T=[{x,y:x.map(sg),mode:"lines",name:"σ(wx+b), b=−1",line:{color:or}},{x:[-5,-3,-1,0,1,2,4,5],y:[0,0,0,0,1,1,1,1],mode:"markers",name:"etiquetas",marker:{color:bl,size:9}}];
+ }else{
+  const C=[[2,2],[7,3],[4,7]],P=[];C.forEach(c=>{for(let i=0;i<25;i++)P.push([c[0]+(rnd()-.5)*3,c[1]+(rnd()-.5)*3])});
+  let m=[...Array(v)].map((_,i)=>P[Math.floor(i*P.length/v)].slice()),lab=[];
+  for(let it=0;it<15;it++){lab=P.map(p=>{let b=0,d=1e9;m.forEach((c,j)=>{const e=(p[0]-c[0])**2+(p[1]-c[1])**2;if(e<d){d=e;b=j}});return b});
+   m=m.map((c,j)=>{const q=P.filter((_,i)=>lab[i]==j);return q.length?[q.reduce((s,p)=>s+p[0],0)/q.length,q.reduce((s,p)=>s+p[1],0)/q.length]:c})}
+  T=[{x:P.map(p=>p[0]),y:P.map(p=>p[1]),mode:"markers",marker:{color:lab,colorscale:"Portland",size:8},name:"puntos"},{x:m.map(c=>c[0]),y:m.map(c=>c[1]),mode:"markers",name:"centroides",marker:{symbol:"x",size:14,color:or,line:{width:3,color:or}}}];
+ }
+ Plotly.react("plot",T,L,{responsive:true,displaylogo:false});
+}
+init();
+</script>
+</body>
+</html>
